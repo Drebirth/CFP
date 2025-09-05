@@ -1,0 +1,34 @@
+Classes:
+
+Login
+Register
+Conta
+Despesas
+
+
+Atributos:
+Conta:
+Id
+Nome
+Salario 
+Totalizador Despesas?
+Totalizador Salario?
+
+
+
+Atributos
+Despesas
+Id
+Id_Conta
+Nome_Despesas
+Data_Inclusao
+Data_Despesa
+Valor
+Totalizador_mensal
+
+
+
+Função
+Calcular Despesas - Salário
+
+ 
