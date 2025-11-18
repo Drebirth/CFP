@@ -1,0 +1,27 @@
+﻿@model IEnumerable<Despesa>
+
+	@{
+				ViewData["Title"] = "Lista de Despesas";
+}
+
+
+<table>
+	<thead>
+		<tr>
+			<th>Nome da Despesa</th>
+			<th>Categoria</th>
+			<th>Valor</th>
+			<th>Data da Despesa</th>
+		</tr>
+	</thead>
+	<tbody>
+		@foreach (var despesa in Model)
+		{
+			<tr>
+				<td>@despesa.Nome_Despesa</td>
+				<td>@despesa.Categoria</td>
+				<td>@despesa.Valor.ToString("C")</td>
+				<td>@despesa.Data_Despesa.ToString("dd/MM/yyyy")</td>
+			</tr>
+		}
+</table>

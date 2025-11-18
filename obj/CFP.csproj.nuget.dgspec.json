@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Danie\\Estudos\\.Net\\Meus_Projetos\\CFP\\cfp\\CFP.csproj": {}
+    "C:\\Users\\Danie\\Estudos\\.Net\\Meus_Projetos\\CFP\\CFP\\CFP.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Danie\\Estudos\\.Net\\Meus_Projetos\\CFP\\cfp\\CFP.csproj": {
+    "C:\\Users\\Danie\\Estudos\\.Net\\Meus_Projetos\\CFP\\CFP\\CFP.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Danie\\Estudos\\.Net\\Meus_Projetos\\CFP\\cfp\\CFP.csproj",
+        "projectUniqueName": "C:\\Users\\Danie\\Estudos\\.Net\\Meus_Projetos\\CFP\\CFP\\CFP.csproj",
         "projectName": "CFP",
-        "projectPath": "C:\\Users\\Danie\\Estudos\\.Net\\Meus_Projetos\\CFP\\cfp\\CFP.csproj",
+        "projectPath": "C:\\Users\\Danie\\Estudos\\.Net\\Meus_Projetos\\CFP\\CFP\\CFP.csproj",
         "packagesPath": "C:\\Users\\Danie\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Danie\\Estudos\\.Net\\Meus_Projetos\\CFP\\cfp\\obj\\",
+        "outputPath": "C:\\Users\\Danie\\Estudos\\.Net\\Meus_Projetos\\CFP\\CFP\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -76,9 +76,19 @@
               "target": "Package",
               "version": "[9.0.8, )"
             },
+            "Microsoft.EntityFrameworkCore.Tools": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[9.0.0, )"
+            },
             "Microsoft.Extensions.Identity.Core": {
               "target": "Package",
               "version": "[9.0.8, )"
+            },
+            "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
+              "target": "Package",
+              "version": "[9.0.0, )"
             },
             "SQLite": {
               "target": "Package",
@@ -104,7 +114,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.304/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.307/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

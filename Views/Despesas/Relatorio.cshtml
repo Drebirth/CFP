@@ -1,0 +1,50 @@
+﻿@model CFP.Models.ControlePessoalViewModel;
+
+@{
+	ViewData["Title"] = "Relatório de Despesas";
+}
+
+<form method="get">
+	<label>Selecione um mês</label>
+	<input asp-for="mes" />
+	<button type="submit">Pesquisar</button>
+</form>
+
+<table class="table table-striped">
+	<thead>
+		<tr>
+			<th>Salario</th>
+			<th>Despesas Totais</th>
+			<th>Saldo restante</th>
+		</tr>
+	</thead>
+	<tbody>
+		<td>@Model.Salario</td>
+		<td>@Model.ValoresMensais</td>
+		<td>@Model.Sobras</td>
+	</tbody>
+</table>
+
+<h3>Lista de despesas</h3>
+
+<table>
+	<thead>
+		<tr>
+			<th>Nome da Despesa</th>
+			<th>Categoria</th>
+			<th>Valor</th>
+			<th>Data da Despesa</th>
+		</tr>
+	</thead>
+	<tbody>
+		@foreach (var despesa in Model.Despesas)
+		{
+			<tr>
+				<td>@despesa.Nome_Despesa</td>
+				<td>@despesa.Categoria</td>
+				<td>@despesa.Valor.ToString("C")</td>
+				<td>@despesa.Data_Despesa.ToString("dd/MM/yyyy")</td>
+			</tr>
+		}
+</table>
+

@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("CFP")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+08bfee81364c32f40bd8a5803bcb51cdd73b25fc")]
 [assembly: System.Reflection.AssemblyProductAttribute("CFP")]
 [assembly: System.Reflection.AssemblyTitleAttribute("CFP")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

@@ -17,63 +17,30 @@ namespace CFP.Migrations
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "9.0.8");
 
-            modelBuilder.Entity("CFP.Entities.Conta", b =>
+            modelBuilder.Entity("CFP.Entities.Despesa", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<DateTime>("DataCriacao")
+                    b.Property<int?>("Categoria")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<DateTime>("Data_Despesa")
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("Nome")
-                        .IsRequired()
+                    b.Property<DateTime>("Data_inclusao")
                         .HasColumnType("TEXT");
 
-                    b.Property<decimal>("Salario")
+                    b.Property<string>("Nome_Despesa")
                         .HasColumnType("TEXT");
 
-                    b.Property<decimal?>("TotalizadorDespesas")
-                        .HasColumnType("TEXT");
-
-                    b.Property<decimal?>("TotalizadorSalario")
+                    b.Property<decimal>("Valor")
                         .HasColumnType("TEXT");
 
                     b.HasKey("Id");
 
-                    b.ToTable("Contas");
-                });
-
-            modelBuilder.Entity("CFP.Entities.Despesas", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("INTEGER");
-
-                    b.Property<DateTime>("DataCriacao")
-                        .HasColumnType("TEXT");
-
-                    b.Property<DateTime?>("DataDespesa")
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("NomeDespesa")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
-
-                    b.Property<decimal?>("TotalizadorDespesasMensal")
-                        .HasColumnType("TEXT");
-
-                    b.Property<decimal>("ValorDespesa")
-                        .HasColumnType("TEXT");
-
-                    b.Property<int?>("contaId")
-                        .HasColumnType("INTEGER");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("contaId");
-
-                    b.ToTable("Despesas");
+                    b.ToTable("DESPESAS");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
@@ -268,15 +235,6 @@ namespace CFP.Migrations
                     b.ToTable("AspNetUserTokens", (string)null);
                 });
 
-            modelBuilder.Entity("CFP.Entities.Despesas", b =>
-                {
-                    b.HasOne("CFP.Entities.Conta", "conta")
-                        .WithMany("Despesas")
-                        .HasForeignKey("contaId");
-
-                    b.Navigation("conta");
-                });
-
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
                 {
                     b.HasOne("Microsoft.AspNetCore.Identity.IdentityRole", null)
@@ -326,11 +284,6 @@ namespace CFP.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-                });
-
-            modelBuilder.Entity("CFP.Entities.Conta", b =>
-                {
-                    b.Navigation("Despesas");
                 });
 #pragma warning restore 612, 618
         }
