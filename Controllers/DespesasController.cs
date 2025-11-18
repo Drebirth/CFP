@@ -1,11 +1,12 @@
-﻿using System.Linq;
-using CFP.Context;
+﻿using CFP.Context;
 using CFP.Entities;
 using CFP.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
+using System.Linq;
+using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
 
 namespace CFP.Controllers
 {
@@ -24,8 +25,8 @@ namespace CFP.Controllers
         // GET: DesepesasController
         public ActionResult Index()
         {
-            var despesas = _context.DESPESAS.ToList();
-            return View(despesas);
+            var despesasList = _context.DESPESAS.ToList().Where(d => d.UserName == User.Identity.Name);
+            return View(despesasList);
         }
 
         // GET: DesepesasController/Details/5
@@ -64,7 +65,7 @@ namespace CFP.Controllers
                 model.Valor = despesa.Valor ?? 0;
                 model.Categoria = despesa.Categoria;
                 model.Data_Despesa = (DateTime)despesa.DataDespesa;
-              
+                model.UserName = User.Identity.Name ?? "Anônimo";
                 _context.DESPESAS.Add(model);
                 _context.SaveChanges();
 
@@ -145,7 +146,7 @@ namespace CFP.Controllers
             ControlePessoal relatorio = new ControlePessoal();
             //var despesas = _context.DESPESAS.Where(d => d.Data_Despesa.Month ==  DateTime.Now.Month);
             
-            var despesas = _context.DESPESAS.Where(d => d.Data_Despesa.Month == mes);
+            var despesas = _context.DESPESAS.Where(d => d.Data_Despesa.Month == mes && d.UserName ==  User.Identity.Name);
             relatorio.Salario = 2800;
             //relatorio.ValoresMensais = (decimal)_context.DESPESAS.Sum(d => d.Valor);
             relatorio.ValoresMensais = despesas.Sum(d => d.Valor);
@@ -158,7 +159,7 @@ namespace CFP.Controllers
             controlePessoal.Sobras = relatorio.sobras;
 
             //var despesasList = despesas.ToList().Where(d => d.Data_Despesa.Month == DateTime.Now.Month);
-            var despesasList = despesas.ToList().Where(d => d.Data_Despesa.Month == mes);
+            var despesasList = despesas.ToList().Where(d => d.Data_Despesa.Month == mes && d.UserName == User.Identity.Name);
             controlePessoal.Despesas = despesasList.ToList();
 
             return View(controlePessoal);
