@@ -2,11 +2,14 @@
 using CFP.Context;
 using CFP.Entities;
 using CFP.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
 
 namespace CFP.Controllers
 {
+    [Authorize]
     public class DespesasController : Controller
     {
         private readonly ILogger<DespesasController> _logger;
@@ -76,22 +79,42 @@ namespace CFP.Controllers
         // GET: DesepesasController/Edit/5
         public ActionResult Edit(int id)
         {
-            return View();
+            var despesa = _context.DESPESAS.Find(id);
+            //var despesasViewModel = new DespesasViewModel
+            //{
+            //    //Id = despesa.Id,
+            //    NomeDespesa = despesa.Nome_Despesa,
+            //    Categoria = despesa.Categoria,
+            //    Valor = despesa.Valor,
+            //    DataDespesa = despesa.Data_Despesa,                              
+            //};
+
+            var categorias = Enum.GetValues(typeof(Categorias))
+                            .Cast<Categorias>()
+                            .Select(c => new SelectListItem
+                            {
+                                Value = ((int)c).ToString(),
+                                Text = c.ToString().Replace("_", " ")
+                            })
+                            .ToList();
+
+            ViewBag.Categorias = categorias;
+            return View(despesa);
         }
 
         // POST: DesepesasController/Edit/5
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
+        [HttpPost]      
+        public ActionResult Edit(Despesa despesa)
         {
-            try
+            if(ModelState.IsValid)
             {
+                
+                _context.DESPESAS.Update(despesa);
+
+                _context.SaveChanges();
                 return RedirectToAction(nameof(Index));
             }
-            catch
-            {
-                return View();
-            }
+            return View(despesa);
         }
 
         // GET: DesepesasController/Delete/5
@@ -121,6 +144,7 @@ namespace CFP.Controllers
             // Passar o mês como parâmetro futuramente
             ControlePessoal relatorio = new ControlePessoal();
             //var despesas = _context.DESPESAS.Where(d => d.Data_Despesa.Month ==  DateTime.Now.Month);
+            
             var despesas = _context.DESPESAS.Where(d => d.Data_Despesa.Month == mes);
             relatorio.Salario = 2800;
             //relatorio.ValoresMensais = (decimal)_context.DESPESAS.Sum(d => d.Valor);

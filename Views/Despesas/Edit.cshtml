@@ -1,0 +1,36 @@
+﻿@model CFP.Entities.Despesa
+@using Microsoft.AspNetCore.Mvc.Rendering
+
+<h2>Editar Despesa</h2>
+
+<form method="post">
+    <div class="row mb-3">
+        <label asp-for="Nome_Despesa" class="control-label">Despesa</label>
+        <input asp-for="Nome_Despesa" class="form-control" placeholder="Descrição da despesa" value="@Model.Nome_Despesa" />
+        <span asp-validation-for="Nome_Despesa" class="text-danger"></span>
+    </div>
+
+    <div class="row mb-3">
+        <label asp-for="Categoria" class="control-label"></label>
+        <select asp-for="Categoria" class="form-control" asp-items="@(ViewBag.Categorias as IEnumerable<SelectListItem>)">
+            <option value="">-- selecione uma categoria --</option>
+        </select>
+        <span asp-validation-for="Categoria" class="text-danger"></span>
+    </div>
+
+    <div class="row mb-3">
+        <label asp-for="Valor" class="control-label"></label>
+        <input asp-for="Valor" class="form-control" placeholder="Valor gasto" value="@Model.Valor" />
+        <span asp-validation-for="Valor" class="text-danger"></span>
+    </div>
+
+    <div class="row mb-3">
+        <label asp-for="Data_Despesa" class="control-label"></label>
+        <input asp-for="Data_Despesa" type="date" class="form-control" placeholder="Data da Despesa" value="@Model.Data_Despesa" />
+        <span asp-validation-for="Data_Despesa" class="text-danger"></span>
+    </div>
+
+    <div class="col-md-2">
+        <input type="submit" value="Editar" class="btn btn-primary" />
+    </div>
+</form>

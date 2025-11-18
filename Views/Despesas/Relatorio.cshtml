@@ -4,6 +4,8 @@
 	ViewData["Title"] = "Relatório de Despesas";
 }
 
+<a asp-action="Index" asp-controller="Despesas">Mostrar todas as despesas</a>
+
 <form method="get">
 	<label>Selecione um mês</label>
 	<input asp-for="mes" />
@@ -27,7 +29,7 @@
 
 <h3>Lista de despesas</h3>
 
-<table>
+<table class="table table-striped">
 	<thead>
 		<tr>
 			<th>Nome da Despesa</th>

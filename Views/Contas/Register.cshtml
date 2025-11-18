@@ -1,0 +1,23 @@
+﻿@model RegisterViewModel
+
+@{
+	ViewData["Title"] = "Cadastro de usuário";
+}
+
+<form method="post">
+	<div>
+		<label asp-for="Username">Username:</label>
+		<input asp-for="Username" />
+	</div>
+	<div>
+		<label asp-for="Password">Password:</label>
+		<input asp-for="Password" type="password" />
+	</div>
+	<div>
+		<label asp-for="ConfirmPassword">Confirm Password:</label>
+		<input asp-for="ConfirmPassword" type="password" />
+	</div>
+	<div>
+		<button type="submit">Login</button>
+	</div>
+</form>

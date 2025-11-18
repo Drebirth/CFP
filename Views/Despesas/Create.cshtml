@@ -4,33 +4,33 @@
 <h2>Incluir Despesa</h2>
 
 <form method="post">
-    <div class="form-group">
-        <label asp-for="NomeDespesa" class="control-label"></label>
-        <input asp-for="NomeDespesa" class="form-control" />
+    <div class="row mb-3">
+        <label asp-for="NomeDespesa" class="control-label">Despesa</label>
+        <input asp-for="NomeDespesa" class="form-control" placeholder="Descrição da despesa" />
         <span asp-validation-for="NomeDespesa" class="text-danger"></span>
     </div>
 
-    <div class="form-group">
+    <div class="row mb-3">
         <label asp-for="Categoria" class="control-label"></label>
         <select asp-for="Categoria" class="form-control" asp-items="@(ViewBag.Categorias as IEnumerable<SelectListItem>)">
-            <option value="">-- selecione --</option>
+            <option value="">-- selecione uma categoria --</option>
         </select>
         <span asp-validation-for="Categoria" class="text-danger"></span>
     </div>
 
-    <div class="form-group">
+    <div class="row mb-3">
         <label asp-for="Valor" class="control-label"></label>
-        <input asp-for="Valor" class="form-control" />
+        <input asp-for="Valor" class="form-control" placeholder="Valor gasto" />
         <span asp-validation-for="Valor" class="text-danger"></span>
     </div>
 
-    <div class="form-group">
+    <div class="row mb-3">
         <label asp-for="DataDespesa" class="control-label"></label>
-        <input asp-for="DataDespesa" type="date" class="form-control" />
+        <input asp-for="DataDespesa" type="date" class="form-control" placeholder="Data da Despesa" />
         <span asp-validation-for="DataDespesa" class="text-danger"></span>
     </div>
 
-    <div class="form-group">
+    <div class="col-md-2">
         <input type="submit" value="Salvar" class="btn btn-primary" />
     </div>
 </form>
